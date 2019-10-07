@@ -5,9 +5,12 @@ if (process.env.NODE_ENV !== "production") {
 const express = require("express");
 const app = express();
 const expressLayouts = require("express-ejs-layouts");
-
+//setting up mongodb server
 const mongoose = require("mongoose");
-mongoose.connect(process.env.DATABASE_URL,{useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.DATABASE_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 const db = mongoose.connection;
 
 db.on("error", error => console.error(error));
@@ -23,7 +26,9 @@ app.use(express.static("public"));
 
 //routers
 const indexRouter = require("./routes/index");
+const authorsRouter = require("./routes/authors");
 app.use("/", indexRouter);
+app.use("/authors", authorsRouter);
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
