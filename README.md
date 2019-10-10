@@ -1,1 +1,1 @@
-Fullstack app with Node, Express, MongoDB and ejs templating engine.
+MVC app with Node, Express, MongoDB and ejs templating engine.
